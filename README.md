@@ -1,4 +1,4 @@
-# vato-harvester
+# vat-harvester
 
 ```
 # Copyright (c) 2026:
