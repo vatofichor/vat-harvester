@@ -1,0 +1,23 @@
+{
+  "domain": "specs",
+  "target_drive": "",
+  "target_root": "./dev/test_repo",
+  "target_subdirs": [
+    "dev/specs",
+    ".dev/specs",
+    "ai_persistent_files/dev/specs"
+  ],
+  "paths": {
+    "stage_dir": "repo/stage",
+    "repo_items_dir": "repo/specs",
+    "eject_dir": "unspec",
+    "stage_ledger": "stage-ledger.txt",
+    "spec_manifest": "spec-manifest.txt",
+    "lock_file": "repo/.harvester.lock",
+    "digests_dir": "digests"
+  },
+  "rules": {
+    "primary_spec_regex": "/[_-]specs?\\.[^.]+$/i",
+    "antipattern_regex": "/(?:^|[-_.,0-9])(?:unspec|unitem|exitm)(?:$|[-_.,0-9])/i"
+  }
+}
