@@ -1,0 +1,7 @@
+{
+  "_comment": "Target all .md markdown files. Paste into your harvester config under 'rules'.",
+  "rules": {
+    "primary_spec_regex": "/\\.md$/i",
+    "antipattern_regex": "/(?:^|[-_.,0-9])(?:unspec|unitem|exitm)(?:$|[-_.,0-9])/i"
+  }
+}

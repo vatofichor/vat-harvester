@@ -1,0 +1,6 @@
+{
+  "_comment": "Antipattern filter for temporary, backup, and scratch files. Paste into your harvester config under 'rules'.",
+  "rules": {
+    "antipattern_regex": "/(?:^|[-_.])(?:tmp|temp|bak|backup|scratch|draft)(?:$|[-_.])|(?:\\.tmp|\\.bak|\\.swp|~)$/i"
+  }
+}

@@ -1,0 +1,3 @@
+2785f511,D:\Dev\vat-harvester\testing\source\1\dev\specs\sample-spec.txt,D:\Dev\vat-harvester\testing\repo\specs\1\dev\specs\sample-spec.txt
+64f1d80f,D:\Dev\vat-harvester\testing\source\v212_archive_proj\auth-specs.md,D:\Dev\vat-harvester\testing\repo\specs\v212_archive_proj\auth-specs.md
+9ea3dc8a,D:\Dev\vat-harvester\testing\source\v212_archive_proj\backup_20260301-specs.zip,D:\Dev\vat-harvester\testing\repo\specs\v212_archive_proj\backup_20260301-specs.zip

@@ -1,0 +1,6 @@
+{
+  "_comment": "Antipattern filter for minified, bundled, and build/vendor artifacts. Paste into your harvester config under 'rules'.",
+  "rules": {
+    "antipattern_regex": "/(?:\\.min\\.[^.]+|\\.bundle\\.[^.]+|\\.map$|(?:^|[-_.])(?:dist|build|vendor|minified)(?:$|[-_.\\\\/]))/i"
+  }
+}

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--
+    # Copyright (c) 2026:
+    # vatofichor - Sebastian Mass     [>_<]
+    # & Assisted By Gemini Antigravity /|\
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vat-harvester</title>
+    <style>
+        :root {
+            --bg: #0d1117;
+            --panel: #161b22;
+            --border: #30363d;
+            --accent: #58a6ff;
+            --text: #c9d1d9;
+            --code-bg: #010409;
+            --font-mono: 'Consolas', monospace;
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-sans);
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .subtitle {
+            color: #8b949e;
+            font-size: 1rem;
+        }
+
+        .section {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.4rem;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-size: 0.92rem;
+        }
+
+        code,
+        pre {
+            font-family: var(--font-mono);
+            background: var(--code-bg);
+            border-radius: 4px;
+        }
+
+        code {
+            padding: 0.2rem 0.4rem;
+            font-size: 0.85rem;
+            color: #79c0ff;
+        }
+
+        pre {
+            padding: 0.75rem;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            color: #f0f6fc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+
+        th,
+        td {
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: #161b22;
+            color: #fff;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #238636;
+            color: #fff;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        ul {
+            padding-left: 1.2rem;
+            margin-bottom: 0;
+        }
+
+        li {
+            margin-bottom: 0.35rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>vat-harvester</h1>
+        <div class="subtitle">Workspace file aggregator, staging engine, antipattern ejector, streaming open digest compiler, and simplex web GUI dashboard</div>
+    </header>
+
+    <div class="section">
+        <h2>Simplex Web GUI Dashboard (:8091)</h2>
+        <p>Zero-dependency, high-density retro dark grid web GUI powered directly by PHP's built-in development webserver.</p>
+        <ul>
+            <li><strong>Windows</strong>: Double-click <code>vat-harvester.bat</code></li>
+            <li><strong>Linux / macOS</strong>: Run <code>./vat-harvester.sh</code></li>
+            <li><strong>URL</strong>: <code>http://127.0.0.1:8091</code></li>
+            <li><strong>Features</strong>: Instant single-click actions (<code>STATUS</code>, <code>PULL</code>, <code>COMMIT</code>, <code>DIGEST</code>, <code>EJECT</code>, <code>PURGE</code>), modifier toggles (<code>--RunBuild</code>, <code>--DryRun</code>, <code>--UseDefaultFallback</code>, <code>--select-latest</code>, <code>--disable-zip</code>), configuration selector, depth limiter, and inline live console viewer.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Quick Command Reference</h2>
+        <pre>harvester status                               Display source, destination, and repository summary
+harvester pull                                 Dry-run preview of candidate specs to stage
+harvester pull --RunBuild                      Execute live staging into repository stage area
+harvester pull --select-latest --RunBuild      Stage only newest candidate per directory/family
+harvester pull --scan-max-depth=0 --RunBuild   Limit scanning to immediate root without descending
+harvester pull --purge --RunBuild              Clear existing staging items and live stage fresh specs
+harvester eject                                Dry-run preview of antipattern candidates
+harvester eject --RunBuild                     Move antipattern candidate files to unspec/
+harvester commit --id=&lt;ID&gt;                     Dry-run preview of promoting specific staged item
+harvester commit --id=&lt;ID&gt; --RunBuild          Promote specific staged item to repository specs
+harvester commit --all --RunBuild              Promote all staged items to repository storage
+harvester purge                                Dry-run preview of uncommitted items to be cleared
+harvester purge --RunBuild                     Clear temporary staging buffer and reset ledger
+harvester digest                               Dry-run preview of specs to be digested
+harvester digest --RunBuild                    Generate markdown digest report and native zip archive
+harvester digest --disable-zip --RunBuild      Stream open markdown digest with SHA-256 without zipping</pre>
+    </div>
+
+    <div class="section">
+        <h2>Global Execution Flags</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Flag</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>--RunBuild</code></td>
+                    <td>Execute live filesystem mutations (default mode is non-destructive Dry-Run)</td>
+                </tr>
+                <tr>
+                    <td><code>--DryRun</code></td>
+                    <td>Force non-destructive preview mode</td>
+                </tr>
+                <tr>
+                    <td><code>--UseDefaultFallback</code></td>
+                    <td>Allow fallback to software install root when destination root is unset</td>
+                </tr>
+                <tr>
+                    <td><code>--config=&lt;path&gt;</code></td>
+                    <td>Specify custom JSON configuration profile (strict upfront validation)</td>
+                </tr>
+                <tr>
+                    <td><code>--id=&lt;ID&gt;</code></td>
+                    <td>Target specific spec hash identifier for commit or eject</td>
+                </tr>
+                <tr>
+                    <td><code>--select-latest</code></td>
+                    <td>Retain only newest candidate per group/stem, filtering historical duplicates</td>
+                </tr>
+                <tr>
+                    <td><code>--latest-grouping=&lt;mode&gt;</code></td>
+                    <td>Deduplication grouping strategy: <code>directory</code> (default) or <code>regex</code></td>
+                </tr>
+                <tr>
+                    <td><code>--disable-zip</code></td>
+                    <td>Bypass <code>ZipArchive</code> packaging; generate streaming markdown digest only</td>
+                </tr>
+                <tr>
+                    <td><code>--scan-max-depth=&lt;N&gt;</code></td>
+                    <td>Limit directory scanning recursion depth (<code>0</code> = immediate folder only)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Shell &amp; Batch File Shortcuts (<code>/bin</code>)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Windows (<code>.bat</code>)</th>
+                    <th>Linux / POSIX (<code>.sh</code>)</th>
+                    <th>Command Executed</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>harvester.bat</code> <em>(Root)</em></td>
+                    <td><code>harvester.sh</code> <em>(Root)</em></td>
+                    <td>Master CLI engine forwarder</td>
+                </tr>
+                <tr>
+                    <td><code>vat-harvester.bat</code> <em>(Root)</em></td>
+                    <td><code>vat-harvester.sh</code> <em>(Root)</em></td>
+                    <td>Simplex Web GUI dashboard launcher (<code>:8091</code>)</td>
+                </tr>
+                <tr>
+                    <td><code>bin/pull_specs.bat</code></td>
+                    <td><code>bin/pull_specs.sh</code></td>
+                    <td>Runs <code>harvester pull</code> (supports <code>--RunBuild</code>, <code>--purge</code>)</td>
+                </tr>
+                <tr>
+                    <td><code>bin/commit_staged.bat &lt;ID&gt;</code></td>
+                    <td><code>bin/commit_staged.sh &lt;ID&gt;</code></td>
+                    <td>Runs <code>harvester commit &lt;ID&gt;</code></td>
+                </tr>
+                <tr>
+                    <td><code>bin/commit_all.bat</code></td>
+                    <td><code>bin/commit_all.sh</code></td>
+                    <td>Runs <code>harvester commit --all</code></td>
+                </tr>
+                <tr>
+                    <td><code>bin/digest_cycle.bat</code></td>
+                    <td><code>bin/digest_cycle.sh</code></td>
+                    <td>Runs <code>harvester digest</code></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Configuration &amp; Decoupled Logging (<code>harvester.config.json</code>)</h2>
+        <pre>{
+  "domain": "specs",
+  "use_default_fallback": false,
+  "source_drive": "C:",
+  "source_root": "./workspace",
+  "source_subdirs": [
+    "specs",
+    "docs/specs"
+  ],
+  "scan_max_depth": null,
+  "select_latest_only": false,
+  "latest_grouping": "directory",
+  "disable_digest_zip": false,
+  "digest_mode": "zip",
+  "destination_drive": "C:",
+  "destination_root": "./repo",
+  "paths": {
+    "stage_dir": "repo/stage",
+    "repo_items_dir": "repo/specs",
+    "eject_dir": "unspec",
+    "stage_ledger": "stage-ledger.txt",
+    "spec_manifest": "spec-manifest.txt",
+    "lock_file": "repo/.harvester.lock",
+    "digests_dir": "digests"
+  },
+  "rules": {
+    "primary_spec_regex": "/[_-]specs?\\.[^.]+$/i",
+    "antipattern_regex": "/(?:^|[-_.,0-9])(?:unspec|unitem|exitm)(?:$|[-_.,0-9])/i"
+  }
+}</pre>
+        <ul>
+            <li><strong>Runtime Requirement</strong>: Strictly requires PHP 8.3.0 or higher (<code>PHP_VERSION_ID &gt;= 80300</code>).</li>
+            <li><strong>Traversal Depth Restriction</strong>: <code>"scan_max_depth": 0</code> stops file crawler recursion at immediate root directories, avoiding heavy nested folders (<code>vendor</code>, <code>node_modules</code>, <code>.bkup</code>).</li>
+            <li><strong>Latest File Deduplication</strong>: <code>"select_latest_only": true</code> compares file modification times (<code>filemtime</code>) and natural filename ordering, staging only the single newest asset per directory or regex stem.</li>
+            <li><strong>Streaming Open Digest</strong>: <code>"disable_digest_zip": true</code> or <code>"digest_mode": "open"</code> eliminates redundant "ZIP of ZIPs" operations on pre-compressed assets, outputting stream-written markdown reports with chunked SHA-256 signatures at zero RAM overhead.</li>
+            <li><strong>Decoupled Ledger &amp; Manifest</strong>: <code>paths.stage_ledger</code> and <code>paths.spec_manifest</code> accept filenames, absolute paths, or directory targets (e.g. <code>"custom_logs/"</code>), allowing isolated or overlapping log sets per configuration profile.</li>
+            <li><strong>Cross-Drive Operations</strong>: Transparently executes verified copy + size integrity check + source unlink across drive boundaries to prevent Windows <code>EXDEV</code> errors.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Coming Up Next</h2>
+        <ul>
+            <li><strong><code>.hide.</code> File Alias Support</strong>: Explorer-hidden file aliasing for target files using prefixed identical placeholder files.</li>
+        </ul>
+    </div>
+
+</body>
+
+</html>

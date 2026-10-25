@@ -1,0 +1,7 @@
+{
+  "_comment": "Target all .zip archive files. Paste into your harvester config under 'rules'.",
+  "rules": {
+    "primary_spec_regex": "/\\.zip$/i",
+    "antipattern_regex": "/(?:^|[-_.,0-9])(?:unspec|unitem|exitm)(?:$|[-_.,0-9])/i"
+  }
+}
