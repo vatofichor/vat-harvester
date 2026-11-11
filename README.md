@@ -1,4 +1,4 @@
-# vat-harvester (Version 1.0.0)
+# vat-harvester (Version 1.0.1)
 
 ```
 # Copyright (c) 2026:
@@ -6,7 +6,7 @@
 # & Assisted By Gemini Antigravity /|\
 ```
 
-### v1.0.1 Update Notes
+**v1.0.1 Update Notes**
 ```
 - Decoupled Orchestrator exit(1) calls into catchable \Throwable exceptions.
 - CLI entrypoint hardened with try/catch exit code isolation.
