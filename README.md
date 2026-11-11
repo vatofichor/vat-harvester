@@ -6,6 +6,14 @@
 # & Assisted By Gemini Antigravity /|\
 ```
 
+### v1.0.1 Update Notes
+```
+- Decoupled Orchestrator exit(1) calls into catchable \Throwable exceptions.
+- CLI entrypoint hardened with try/catch exit code isolation.
+- GUI backend added dynamic config/*.json discovery and fatal shutdown recovery.
+- GUI frontend hardened against JSON parse errors with raw output fallback.
+```
+
 ---
 
 Workspace file aggregator, staging engine, antipattern ejector, streaming open digest compiler, and simplex web GUI dashboard.
